@@ -22,3 +22,13 @@ jobs:
 
       - name: Test app
         run: curl http://localhost:8000
+
+  sbom-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run SBOM Action
+        uses: ./.github/actions/sbom

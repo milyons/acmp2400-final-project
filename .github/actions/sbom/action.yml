@@ -1,0 +1,6 @@
+name: "SBOM Scan Action"
+description: "Generates SBOM and scans for vulnerabilities"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"

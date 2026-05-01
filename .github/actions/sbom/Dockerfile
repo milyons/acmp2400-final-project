@@ -1,8 +1,9 @@
-FROM python:3.11-slim
+FROM python:3.11
 
-RUN pip install cyclonedx-bom safety
+WORKDIR /action
 
 COPY entrypoint.sh /entrypoint.sh
+
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

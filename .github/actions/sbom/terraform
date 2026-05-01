@@ -1,0 +1,16 @@
+FROM ubuntu:latest
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y curl unzip
+
+# install terraform
+RUN curl -fsSL https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip -o tf.zip \
+    && unzip tf.zip \
+    && mv terraform /usr/local/bin/ \
+    && rm tf.zip
+
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]

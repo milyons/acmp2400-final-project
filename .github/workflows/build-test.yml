@@ -1,0 +1,24 @@
+name: Build and Test Django App
+
+on:
+  push:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t django-app .
+
+      - name: Run container
+        run: docker run -d -p 8000:8000 -e DJANGO_SECRET_KEY=dev-secret-key django-app
+
+      - name: Wait for startup
+        run: sleep 5
+
+      - name: Test app
+        run: curl http://localhost:8000

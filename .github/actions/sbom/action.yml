@@ -4,4 +4,3 @@ description: "Generates SBOM and scans vulnerabilities"
 runs:
   using: "docker"
   image: "Dockerfile"
-  context: ".github/actions/sbom"

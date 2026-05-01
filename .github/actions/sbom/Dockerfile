@@ -1,6 +1,6 @@
 FROM python:3.11
 
-WORKDIR /action
+WORKDIR /github/workspace
 
 COPY entrypoint.sh /entrypoint.sh
 
